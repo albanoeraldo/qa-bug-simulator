@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Bug Simulator | Albano Tech</title>
+    <link rel="stylesheet" href="qa-bug-simulator/assets/css/global.css" />
+    <link rel="stylesheet" href="qa-bug-simulator/assets/css/app.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">QA</div>
+      <div>
+        <h1>QA Bug Simulator</h1>
+        <p>Simulador de Erros/Bugs para treinar reprodução, evidência e relatório.</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="btnCopy" class="btn ghost" title="Copia um relatório completo do bug selecionado">
+        Copiar relatório
+      </button>
+      <button id="btnReset" class="btn danger" title="Reseta o cenário e limpa os logs">
+        Resetar cenário
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Selecionar bug</h2>
+        <div class="row">
+          <label class="label" for="bugSelect">Bug</label>
+          <select id="bugSelect" class="select"></select>
+        </div>
+      </div>
+
+      <div class="panel-body grid">
+        <div class="card">
+          <div class="card-title">
+            <h3 id="bugName">—</h3>
+            <span id="bugSeverity" class="badge">—</span>
+          </div>
+          <p id="bugDesc" class="muted">Selecione um bug para ver detalhes.</p>
+
+          <div class="sub">
+            <h4>Passos para reproduzir</h4>
+            <ol id="bugSteps" class="list"></ol>
+          </div>
+
+          <div class="sub two-cols">
+            <div>
+              <h4>Resultado esperado</h4>
+              <p id="bugExpected" class="box ok"></p>
+            </div>
+            <div>
+              <h4>Resultado atual (simulado)</h4>
+              <p id="bugActual" class="box warn"></p>
+            </div>
+          </div>
+
+          <div class="sub">
+            <h4>Correção sugerida</h4>
+            <p id="bugFix" class="box info"></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <h3>Cenário</h3>
+            <span id="envBadge" class="badge outline">Base de teste (simulada)</span>
+          </div>
+
+          <div class="scenario">
+            <div class="scenario-row">
+              <span class="label">Perfil</span>
+              <div class="toggle">
+                <button id="btnProfileUser" class="btn small active">Usuário</button>
+                <button id="btnProfileAdmin" class="btn small">Admin</button>
+              </div>
+            </div>
+
+            <div class="scenario-row">
+              <span class="label">Status</span>
+              <span id="statusValue" class="pill">Aberto</span>
+            </div>
+
+            <div class="scenario-row">
+              <span class="label">Ações</span>
+              <div class="actions">
+                <button id="btnAction" class="btn primary">Executar ação</button>
+                <button id="btnSecondary" class="btn">Ação secundária</button>
+              </div>
+            </div>
+
+            <div class="scenario-row">
+              <span class="label">Eventos gerados</span>
+              <span id="eventsCount" class="pill">0</span>
+            </div>
+
+            <div class="hint">
+              Dica: use “Executar ação” para simular o comportamento do bug selecionado.
+            </div>
+          </div>
+
+          <div class="sub">
+            <h4>Logs</h4>
+            <div class="log-toolbar">
+              <button id="btnClearLogs" class="btn ghost small">Limpar logs</button>
+            </div>
+            <div id="logBox" class="log-box" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="qa-bug-simulator/assets/js/app.js"></script>
+</body>
+</html>
